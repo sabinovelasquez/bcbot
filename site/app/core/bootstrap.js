@@ -13,7 +13,7 @@ const ngModule = angular.module('app', [
 require('./config')(ngModule);
 require('./controllers')(ngModule);
 require('./directives')(ngModule);
-// require('./services')(ngModule);
+require('./services')(ngModule);
 
 angular.element(document).ready(() => {
   angular.bootstrap(document, ['app'], {
