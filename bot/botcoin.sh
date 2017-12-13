@@ -89,7 +89,7 @@ then
 fi
 
 now=$(date +"%T")
-cat <<EOF >bitcoin.json
+cat <<EOF >/var/www/sabino.cl/public_html/botcoin/bitcoin.json
 {
   "botcoin": {
     "CLP": $price_int,
