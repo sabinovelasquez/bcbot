@@ -2,6 +2,7 @@
 
 price=`curl 'https://www.surbtc.com/api/v2/markets/btc-clp/ticker.json' | jq '.["ticker"]["last_price"][0]'`;
 price_buy=10000000;
+price_consider=11500000;
 price_low=7000000;
 price_high=35000000;
 price_temp=${price%.*};
@@ -33,6 +34,32 @@ then
     -d key=62e3e2959d4f4905ab5035df2f6e17672c84386cNqcZCYuIWnL7GlGRd2RYMACl3
 
     cat > buy.check
+  fi
+fi
+
+if [ "$price_int" -le "$price_consider" ]
+then
+  file="consider.check"
+  if [ -f "$file" ]
+  then
+    echo "$file found."
+  else
+    curl -X POST https://textbelt.com/text \
+    --data-urlencode phone='+56968406912' \
+    --data-urlencode message='Considera comprar, el precio está en: '$price_int \
+    -d key=62e3e2959d4f4905ab5035df2f6e17672c84386cNqcZCYuIWnL7GlGRd2RYMACl3
+
+    curl -X POST https://textbelt.com/text \
+    --data-urlencode phone='+56984134906' \
+    --data-urlencode message='Considera comprar, el precio está en: '$price_int \
+    -d key=62e3e2959d4f4905ab5035df2f6e17672c84386cNqcZCYuIWnL7GlGRd2RYMACl3
+
+    curl -X POST https://textbelt.com/text \
+    --data-urlencode phone='+56988193592' \
+    --data-urlencode message='Considera comprar, el precio está en: '$price_int \
+    -d key=62e3e2959d4f4905ab5035df2f6e17672c84386cNqcZCYuIWnL7GlGRd2RYMACl3
+
+    cat > consider.check
   fi
 fi
 
