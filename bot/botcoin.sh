@@ -1,7 +1,7 @@
 #!/bin/bash
 
 price=`curl 'https://www.surbtc.com/api/v2/markets/btc-clp/ticker.json' | jq '.["ticker"]["last_price"][0]'`;
-price_buy=15000000;
+price_buy=10500000;
 price_consider=11500000;
 price_low=7000000;
 price_high=35000000;
