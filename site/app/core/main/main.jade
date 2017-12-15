@@ -1,5 +1,9 @@
 .main.container
   h2.text-center
-    span Bitcoin
+    span Bitcoin - Ether
   .last_price.text-center
-    h1 {{main.surbtc.last_price[0] | currency}}
+    span(ng-if='main.loading')
+      i.fa.fa-spinner.fa-pulse
+    .content(ng-if='!main.loading')
+      h1 {{main.bitcoin | currency}}
+      h1 {{main.ether | currency}}
