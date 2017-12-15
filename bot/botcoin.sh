@@ -1,6 +1,7 @@
 #!/bin/bash
 
 price=`curl 'https://www.surbtc.com/api/v2/markets/btc-clp/ticker.json' | jq '.["ticker"]["last_price"][0]'`;
+price_eth=`curl 'https://www.surbtc.com/api/v2/markets/eth-clp/ticker.json' | jq '.["ticker"]["last_price"][0]'`;
 price_buy=10500000;
 price_consider=11500000;
 price_low=7000000;
@@ -9,6 +10,11 @@ price_temp=${price%.*};
 price_temp=${price#'"'};
 price_temp=${price_temp%'"'};
 price_int=${price_temp%.*}
+
+price_eth_temp=${price_eth%.*};
+price_eth_temp=${price_eth#'"'};
+price_eth_temp=${price_eth_temp%'"'};
+price_eth_int=${price_eth_temp%.*}
 
 
 if [ "$price_int" -le "$price_buy" ]
@@ -119,7 +125,8 @@ now=$(date +"%T")
 cat <<EOF >/var/www/sabino.cl/public_html/botcoin/bitcoin.json
 {
   "botcoin": {
-    "CLP": $price_int,
+    "btc_clp": $price_int,
+    "eth_clp": $price_eth_int,
     "time": "$now"
   }
 }
