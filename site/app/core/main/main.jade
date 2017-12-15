@@ -2,8 +2,10 @@
   h2.text-center
     span Bitcoin - Ether
   .last_price.text-center
-    span(ng-if='main.loading')
+    h3(ng-if='!main.coin.bitcoin')
       i.fa.fa-spinner.fa-pulse
-    .content(ng-if='!main.loading')
-      h1 {{main.bitcoin | currency}}
-      h1 {{main.ether | currency}}
+    h3(ng-if='!main.coin.ether')
+      i.fa.fa-spinner.fa-pulse
+    .content(ng-if='main.coin.bitcoin')
+      h1 {{main.coin.bitcoin | currency}}
+      h1 {{main.coin.ether | currency}}
