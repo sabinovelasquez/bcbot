@@ -4,7 +4,7 @@ export default ngModule => {
       getBTC: () => {
         return $http({
           method: 'get',
-          url: `https://www.surbtc.com/api/v2/markets/btc-clp/ticker.json`,
+          url: `http://sabino.cl/botcoin/bitcoin.json`,
         });
       },
     };
